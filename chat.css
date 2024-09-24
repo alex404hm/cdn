@@ -10,77 +10,32 @@
     --hover-color: #2A2B32;
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
-/* Default Dark Mode */
+
+/* Dark Mode Variables */
 body.dark-mode {
-    --bg-color: #1e1e2f; /* Slightly darker background */
+    --bg-color: #1e1e2f;
     --sidebar-bg: #181824;
-    --text-color: #e4e6eb; /* Softer white text for better readability */
+    --text-color: #e4e6eb;
     --text-secondary: #9a9aab;
-    --primary-color: #4caf50; /* Softer green for primary elements */
+    --primary-color: #4caf50;
     --border-color: #3a3a4b;
-    --input-bg: #2b2b38; /* Darker input fields */
-    --hover-color: #3a3a4b; /* Slightly lighter hover effect */
+    --input-bg: #2b2b38;
+    --hover-color: #3a3a4b;
 }
 
-/* Light Mode Styles */
+/* Light Mode Variables */
 body.light-mode {
-    --bg-color: #fdfdfd; /* Softer light gray for background */
+    --bg-color: #fdfdfd;
     --sidebar-bg: #ffffff;
-    --text-color: #333333; /* Dark gray text for better contrast */
-    --text-secondary: #5a5a5a; /* Slightly darker secondary text */
-    --primary-color: #007bff; /* Blue for primary elements */
+    --text-color: #333333;
+    --text-secondary: #5a5a5a;
+    --primary-color: #007bff;
     --border-color: #cccccc;
-    --input-bg: #f0f0f5; /* Slightly lighter for input backgrounds */
-    --hover-color: #e6e6e6; /* Light gray for hover effect */
+    --input-bg: #f0f0f5;
+    --hover-color: #e6e6e6;
 }
 
-/* Universal styles for both light and dark mode */
-.new-chat-btn, .delete-all-btn, .action-btn {
-    transition: background-color 0.3s ease;
-    border-radius: 8px;
-}
-
-.new-chat-btn:hover, .delete-all-btn:hover, .action-btn:hover {
-    filter: brightness(0.9); /* Slight dimming on hover for both modes */
-}
-
-.chat-input-area {
-    border-radius: 12px; /* Softer edges for input fields */
-    padding: 10px;
-}
-
-textarea {
-    border-radius: 8px;
-}
-
-.send-btn {
-    transition: color 0.3s ease;
-}
-
-.send-btn:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-}
-
-/* Improved colors for both themes on interactive elements */
-body.dark-mode .new-chat-btn, body.dark-mode .delete-all-btn {
-    background-color: var(--primary-color); /* Use primary color for buttons */
-    color: var(--text-color); /* Ensure good contrast */
-}
-
-body.light-mode .new-chat-btn, body.light-mode .delete-all-btn {
-    background-color: var(--primary-color); /* Light mode button color */
-    color: #ffffff; /* White text on buttons */
-}
-
-/* Improved hover effects */
-body.dark-mode .new-chat-btn:hover, body.dark-mode .delete-all-btn:hover {
-    background-color: #3d8b3d; /* Darker green for hover in dark mode */
-}
-
-body.light-mode .new-chat-btn:hover, body.light-mode .delete-all-btn:hover {
-    background-color: #0056b3; /* Darker blue for hover in light mode */
-}
-
+/* Universal Styles */
 * {
     margin: 0;
     padding: 0;
@@ -117,18 +72,18 @@ body, html {
     margin-bottom: 1rem;
 }
 
-.new-chat-btn {
+.new-chat-btn, .delete-all-btn, .action-btn {
     background-color: var(--primary-color);
     color: var(--text-color);
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, filter 0.3s ease;
 }
 
-.new-chat-btn:hover {
-    background-color: #0d8d6f;
+.new-chat-btn:hover, .delete-all-btn:hover, .action-btn:hover {
+    filter: brightness(0.9);
 }
 
 .toggle-sidebar-btn {
@@ -181,12 +136,6 @@ body, html {
 .delete-all-btn {
     margin-top: auto;
     background-color: #ff4a4a;
-    color: var(--text-color);
-    border: none;
-    padding: 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .delete-all-btn:hover {
@@ -300,20 +249,6 @@ body, html {
     margin-top: 2rem;
 }
 
-.action-btn {
-    background-color: var(--input-bg);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.action-btn:hover {
-    background-color: var(--hover-color);
-}
-
 .chat-window {
     flex-grow: 1;
     overflow-y: auto;
@@ -377,11 +312,12 @@ body, html {
     font-size: 1.2rem;
     cursor: pointer;
     padding: 0.5rem;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .send-btn:hover {
     color: #0d8d6f;
+    transform: scale(1.1);
 }
 
 .disclaimer {
