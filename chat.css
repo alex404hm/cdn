@@ -1,0 +1,424 @@
+:root {
+    --bg-color: #343541;
+    --sidebar-bg: #202123;
+    --text-color: #FFFFFF;
+    --text-secondary: #c5c5d2;
+    --primary-color: #10a37f;
+    --border-color: #4d4d4f;
+    --input-bg: #40414f;
+    --chat-bg: #343541;
+    --hover-color: #2A2B32;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+/* Default Dark Mode */
+body.dark-mode {
+    --bg-color: #1e1e2f; /* Slightly darker background */
+    --sidebar-bg: #181824;
+    --text-color: #e4e6eb; /* Softer white text for better readability */
+    --text-secondary: #9a9aab;
+    --primary-color: #4caf50; /* Softer green for primary elements */
+    --border-color: #3a3a4b;
+    --input-bg: #2b2b38; /* Darker input fields */
+    --hover-color: #3a3a4b; /* Slightly lighter hover effect */
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    --bg-color: #fdfdfd; /* Softer light gray for background */
+    --sidebar-bg: #ffffff;
+    --text-color: #333333; /* Dark gray text for better contrast */
+    --text-secondary: #5a5a5a; /* Slightly darker secondary text */
+    --primary-color: #007bff; /* Blue for primary elements */
+    --border-color: #cccccc;
+    --input-bg: #f0f0f5; /* Slightly lighter for input backgrounds */
+    --hover-color: #e6e6e6; /* Light gray for hover effect */
+}
+
+/* Universal styles for both light and dark mode */
+.new-chat-btn, .delete-all-btn, .action-btn {
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+}
+
+.new-chat-btn:hover, .delete-all-btn:hover, .action-btn:hover {
+    filter: brightness(0.9); /* Slight dimming on hover for both modes */
+}
+
+.chat-input-area {
+    border-radius: 12px; /* Softer edges for input fields */
+    padding: 10px;
+}
+
+textarea {
+    border-radius: 8px;
+}
+
+.send-btn {
+    transition: color 0.3s ease;
+}
+
+.send-btn:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Improved colors for both themes on interactive elements */
+body.dark-mode .new-chat-btn, body.dark-mode .delete-all-btn {
+    background-color: var(--primary-color); /* Use primary color for buttons */
+    color: var(--text-color); /* Ensure good contrast */
+}
+
+body.light-mode .new-chat-btn, body.light-mode .delete-all-btn {
+    background-color: var(--primary-color); /* Light mode button color */
+    color: #ffffff; /* White text on buttons */
+}
+
+/* Improved hover effects */
+body.dark-mode .new-chat-btn:hover, body.dark-mode .delete-all-btn:hover {
+    background-color: #3d8b3d; /* Darker green for hover in dark mode */
+}
+
+body.light-mode .new-chat-btn:hover, body.light-mode .delete-all-btn:hover {
+    background-color: #0056b3; /* Darker blue for hover in light mode */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    height: 100%;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.new-chat-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.new-chat-btn:hover {
+    background-color: #0d8d6f;
+}
+
+.toggle-sidebar-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.search-bar {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 2rem;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--text-color);
+}
+
+.search-bar i {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.chat-list {
+    list-style-type: none;
+    flex-grow: 1;
+}
+
+.chat-list li {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.chat-list li:hover {
+    background-color: var(--hover-color);
+}
+
+.delete-all-btn {
+    margin-top: auto;
+    background-color: #ff4a4a;
+    color: var(--text-color);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-all-btn:hover {
+    background-color: #e04141;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-toggle, .theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.ai-model-selection select {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.3rem;
+    border-radius: 5px;
+}
+
+.app-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.profile-icon {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 1rem;
+    top: 3.5rem;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 0.5rem;
+    list-style-type: none;
+}
+
+.dropdown-menu.active {
+    display: block;
+}
+
+.dropdown-menu li button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    padding: 0.5rem;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-menu li button:hover {
+    background-color: var(--hover-color);
+}
+
+/* Chat Container Styles */
+.chat-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.welcome-screen {
+    text-align: center;
+    padding: 2rem;
+}
+
+.welcome-screen h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.action-btn {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.chat-window {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.chat-message {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.chat-message.user {
+    background-color: var(--primary-color);
+    align-self: flex-end;
+}
+
+.chat-message.ai {
+    background-color: var(--input-bg);
+    align-self: flex-start;
+}
+
+.chat-input-wrapper {
+    margin-top: auto;
+    padding: 1rem;
+    background: linear-gradient(to bottom, transparent, var(--bg-color) 50%);
+}
+
+.chat-input-area {
+    display: flex;
+    align-items: center;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.chat-input-area textarea {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    resize: none;
+    padding: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.chat-input-area textarea:focus {
+    outline: none;
+}
+
+.send-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.send-btn:hover {
+    color: #0d8d6f;
+}
+
+.disclaimer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 50vh;
+    }
+
+    .main-content {
+        height: 50vh;
+    }
+
+    .header {
+        padding: 0.5rem;
+    }
+
+    .app-title {
+        display: none;
+    }
+
+    .chat-input-wrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
